@@ -11,9 +11,9 @@ class ReviewsController < ApplicationController
       end
 
       def create
-        review = Review.create(price: params[:price], pizza_id: params[:pizza_id], restaurant_id: params[:restaurant_id])
+        review = Review.create(parent_id: params[:parent_id], caregiver_id: params[:caregiver_id], comment: params[:comment])
         if review
-            associatedReview = Review.find_by(id: params[:pizza_id])
+            associatedReview = Review.find_by(id: params[:parent_id])
             render json: associatedReview
         else
             render json: { errors: "validation errors"}, status: :unprocessable_entity

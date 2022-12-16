@@ -34,7 +34,7 @@ class CaregiversController < ApplicationController
         end
 
         def caregiver_params
-            params.permit(:name, :email, :address, :phone, :education, :experience, :is_booked, :age)
+            params.permit(:avatar, :name, :email, :address, :gender, :phone, :education, :experience, :is_booked, :age)
           end
 
         def render_not_found_response
