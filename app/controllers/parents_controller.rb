@@ -12,10 +12,10 @@ class ParentsController < ApplicationController
     end
 
     def create
-        parent = Parent.create!(parent_params)
+        user = Parent.create!(parent_params)
         if parent.valid?
             session[:user_id] = parent.id
-            render json: parent, status: :created
+            render json: user, status: :created
         else
             render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     
