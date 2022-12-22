@@ -12,6 +12,20 @@ class CaregiversController < ApplicationController
         render json: caregiver
     end
 
+
+
+    def create
+        user = Caregiver.create!(caregiver_params)
+        if caregiver.valid?
+            session[:user_id] = caregiver.id
+            render json: user, status: :created
+        else
+            render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+    
+        end
+    end
+
+
     def update
         caregiver = caregiver_finder
             caregiver.update!(caregiver_params)
@@ -34,7 +48,7 @@ class CaregiversController < ApplicationController
         end
 
         def caregiver_params
-            params.permit(:avatar, :name, :email, :address, :gender, :phone, :education, :experience, :is_booked, :age)
+            params.permit(:avatar, :name, :password, :password_confirmation, :email, :address, :gender, :phone, :education, :experience, :is_booked, :age)
           end
 
         def render_not_found_response
