@@ -7,11 +7,11 @@ def index
 end
 
 def create
-    caregiver = Caregiver.new(caregiver_params)
-    if caregiver
-    renderjson: caregiver
+    @caregiver = Caregiver.new(caregiver_params)
+    if @caregiver.save
+        render json: @caregiver
     else
-    renderjson: {error: 'Caregiver not created'}, status: :unprocessable_entity
+        render json: {error: 'Error creating caregiver'}
     end
 end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_15_064142) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_26_075259) do
   create_table "caregivers", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_15_064142) do
     t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
   create_table "parents", force: :cascade do |t|
@@ -31,6 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_15_064142) do
     t.integer "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
   create_table "reviews", force: :cascade do |t|

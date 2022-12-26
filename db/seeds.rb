@@ -14,7 +14,7 @@
   end
   
   # Create fake admins
-  5.times do
-    User.create(name: Faker::Name.name, email: Faker::Internet.email, password_digest: Faker::Internet.password, admin: Faker::Boolean.boolean)
-  end
+  # 5.times do
+  #   User.create(name: Faker::Name.name, email: Faker::Internet.email, password_digest: Faker::Internet.password, admin: Faker::Boolean.boolean)
+  # end
   
