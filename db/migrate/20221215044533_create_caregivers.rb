@@ -4,6 +4,7 @@ class CreateCaregivers < ActiveRecord::Migration[7.0]
       t.string :avatar
       t.string :name
       t.string :email
+      t.string :password_digest
       t.string :address
       t.string :gender
       t.integer :phone

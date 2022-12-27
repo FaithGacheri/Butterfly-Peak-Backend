@@ -15,6 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_15_044544) do
     t.string "avatar"
     t.string "name"
     t.string "email"
+    t.string "password_digest"
     t.string "address"
     t.string "gender"
     t.integer "phone"
@@ -29,6 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_15_044544) do
   create_table "parents", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.string "password_digest"
     t.string "address"
     t.integer "phone"
     t.datetime "created_at", null: false
