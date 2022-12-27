@@ -15,12 +15,12 @@ class CaregiversController < ApplicationController
 
 
     def create
-        user = Caregiver.create!(caregiver_params)
+        caregiver = Caregiver.create!(caregiver_params)
         if caregiver.valid?
-            session[:user_id] = caregiver.id
-            render json: user, status: :created
+            session[:caregiver_id] = caregiver.id
+            render json: caregiver, status: :created
         else
-            render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+            render json: { errors: caregiver.errors.full_messages }, status: :unprocessable_entity
     
         end
     end

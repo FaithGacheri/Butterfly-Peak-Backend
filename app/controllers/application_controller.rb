@@ -1,4 +1,4 @@
 class ApplicationController < ActionController::Base
-    def index
-    end
- end
+    include ActionController::Cookies
+    skip_before_action :verify_authenticity_token
+end

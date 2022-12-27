@@ -1,7 +1,12 @@
 class ParentsController < ApplicationController
+    
+    
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    
     def index
-        parent = Parent.all
-        render json: parent
+  
+        parents = Parent.all
+        render json: parents 
     end
     def create
         parent = Parent.new(parent_params)
@@ -17,12 +22,12 @@ class ParentsController < ApplicationController
     end
 
     def create
-        user = Parent.create!(parent_params)
+        parent = Parent.create!(parent_params)
         if parent.valid?
-            session[:user_id] = parent.id
-            render json: user, status: :created
+            session[:parent_id] = parent.id
+            render json: parent, status: :created
         else
-            render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+            render json: { errors: parent.errors.full_messages }, status: :unprocessable_entity
     
         end
     end
