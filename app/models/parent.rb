@@ -1,9 +1,6 @@
 
 class Parent < ApplicationRecord
-    # validates :email, uniqueness: true
-    # validates :phone, length: { is: 10 }
-    # validates :address, presence: true
-    has_many :reviews
+    has_secure_password
     has_many :caregivers, through: :reviews
 
     # has_secure_password

@@ -1,8 +1,6 @@
 class Caregiver < ApplicationRecord
-    # validates :email, uniqueness: true
-    # validates :phone, length: { is: 10 }
-    # validates :address, presence: true
-    has_many :reviews
+    has_secure_password
+    # belongs_to :parent
     has_many :parents, through: :reviews
 
     # has_secure_password

@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  resources :reviews, only: [:index, :show, :create, :update, :destroy]
-  resources :caregivers, only: [:index, :show, :create, :update, :destroy]
-  resources :parents, only: [:index, :show, :create, :update, :destroy]
-  
+  post "/signup", to: "users#create"
+  get "/me", to: "users#show"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+  resources :reviews
+  resources :caregivers
+  resources :parents
   
   
 end
