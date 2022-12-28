@@ -1,7 +1,9 @@
 class Caregiver < ApplicationRecord
     # has_secure_password
     # belongs_to :parent
+    has_many :reviews
     has_many :parents, through: :reviews
+    has_many :images
 
     # has_secure_password
 end
