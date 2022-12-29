@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_28_191645) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_29_074109) do
   create_table "caregivers", force: :cascade do |t|
     t.string "avatar"
     t.string "email"
@@ -26,7 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_28_191645) do
     t.text "bio"
     t.string "first_name"
     t.string "last_name"
-    t.string "user_name"
+    t.string "username"
   end
 
   create_table "images", force: :cascade do |t|
@@ -37,7 +37,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_28_191645) do
   end
 
   create_table "locations", force: :cascade do |t|
-    t.integer "parent_id"
     t.integer "caregiver_id"
     t.string "city"
     t.string "town"
