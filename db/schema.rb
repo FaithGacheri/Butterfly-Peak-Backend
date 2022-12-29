@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_29_074109) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_29_075803) do
   create_table "caregivers", force: :cascade do |t|
     t.string "avatar"
     t.string "email"
@@ -30,10 +30,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_29_074109) do
   end
 
   create_table "images", force: :cascade do |t|
-    t.string "image"
     t.integer "caregiver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image1"
+    t.string "image2"
+    t.string "image3"
   end
 
   create_table "locations", force: :cascade do |t|
