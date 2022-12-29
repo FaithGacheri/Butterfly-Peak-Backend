@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_29_075803) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_29_081931) do
   create_table "caregivers", force: :cascade do |t|
     t.string "avatar"
     t.string "email"
@@ -45,6 +45,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_29_075803) do
     t.string "street_address"
     t.string "province"
     t.string "postal_zipcode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "parent_addresses", force: :cascade do |t|
+    t.integer "parent_id"
+    t.string "city"
+    t.string "town"
+    t.string "street"
+    t.string "address"
+    t.string "province"
+    t.string "postal"
+    t.string "zipcode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

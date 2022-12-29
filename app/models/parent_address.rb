@@ -1,0 +1,2 @@
+class ParentAddress < ApplicationRecord
+end
