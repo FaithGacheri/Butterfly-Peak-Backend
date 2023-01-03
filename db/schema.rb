@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_29_081931) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_03_095005) do
   create_table "caregivers", force: :cascade do |t|
     t.string "avatar"
+    t.string "name"
     t.string "email"
     t.string "password_digest"
     t.string "gender"
@@ -63,15 +64,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_29_081931) do
   end
 
   create_table "parents", force: :cascade do |t|
+    t.string "name"
     t.string "email"
     t.string "password_digest"
     t.integer "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "firstname"
     t.string "last_name"
     t.string "username"
     t.string "image"
+    t.string "first_name"
   end
 
   create_table "reviews", force: :cascade do |t|
