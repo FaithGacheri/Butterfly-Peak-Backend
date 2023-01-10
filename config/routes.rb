@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :users
+  resources :parents
+  resources :reviews
+  resources :caregivers
 
 #   post ':slug', to: 'parents#create', constraints: ParentConstraint.new
 # post ':slug', to: 'caregivers#create'
@@ -9,9 +13,7 @@ get "/me", to: "users#show"
 post "/login", to: "sessions#create"
 delete "/logout", to: "sessions#destroy"
 
-resources :parents
-resources :reviews
-resources :caregivers
+
   
   
   

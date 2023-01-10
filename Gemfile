@@ -19,7 +19,7 @@ gem "sqlite3", "~> 1.4"
 gem "puma", "~> 5.0"
 
 ##faker
-gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
+# gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]

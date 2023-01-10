@@ -10,12 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_03_095005) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_09_093142) do
   create_table "caregivers", force: :cascade do |t|
     t.string "avatar"
     t.string "name"
-    t.string "email"
-    t.string "password_digest"
     t.string "gender"
     t.integer "phone"
     t.string "education"
@@ -27,7 +25,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_03_095005) do
     t.text "bio"
     t.string "first_name"
     t.string "last_name"
-    t.string "username"
   end
 
   create_table "images", force: :cascade do |t|
@@ -65,13 +62,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_03_095005) do
 
   create_table "parents", force: :cascade do |t|
     t.string "name"
-    t.string "email"
-    t.string "password_digest"
     t.integer "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "last_name"
-    t.string "username"
     t.string "image"
     t.string "first_name"
   end
@@ -80,6 +74,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_03_095005) do
     t.integer "parent_id"
     t.integer "caregiver_id"
     t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "ratings"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "username"
+    t.string "password_digest"
+    t.boolean "is_parent", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
