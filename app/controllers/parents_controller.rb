@@ -8,14 +8,7 @@ class ParentsController < ApplicationController
         parents = Parent.all
         render json: parents 
     end
-    def create
-        parent = Parent.new(parent_params)
-        if parent.save
-            render json: parente
-        else
-            render json: {error: 'Parent not created'}, status: :unprocessable_entity
-        end
-    end
+
     def show
         parent = parent.find(params[:id])
         render json: parent
@@ -52,7 +45,7 @@ class ParentsController < ApplicationController
         end
 
         def parent_params
-            params.permit(:name, :password, :password_confirmation, :email, :address, :phone)
+            params.permit(:username, :password, :password_confirmation, :email, :address, :phone)
           end
 
         def render_not_found_response

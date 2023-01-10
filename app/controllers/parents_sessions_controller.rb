@@ -1,6 +1,6 @@
 class ParentsSessionsController < ApplicationController
     def create
-        parent = Parent.find_by(email: params[:email])
+        parent = Parent.find_by(username: params[:username])
         if parent&.valid_password?(params[:password])
           sign_in(parent)
           render json: { token: create_token(parent) }, status: :created
