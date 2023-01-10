@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :parent_addresses
   resources :parents
   resources :reviews
   resources :caregivers
