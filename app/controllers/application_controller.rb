@@ -31,11 +31,13 @@ class ApplicationController < ActionController::Base
   
     def signin_parent(parent)
       token = JWT.encode({ parent_id: parent.id }, Rails.application.credentials.jwt_secret_key)
-      render json: { token: token }, status: :ok
+      render json: { token: token, parent: parent.as_json(only: [:id, :name, :email, :phone_number]) }, status: :ok
     end
+    
   
     def signin_caregiver(caregiver)
       token = JWT.encode({ caregiver_id: caregiver.id }, Rails.application.credentials.jwt_secret_key)
-      render json: { token: token }, status: :ok
+      render json: { token: token, caregiver: caregiver.as_json(only: [:id, :name, :email, :phone_number]) }, status: :ok
     end
+    
 end
