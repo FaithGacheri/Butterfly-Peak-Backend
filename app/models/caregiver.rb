@@ -5,7 +5,7 @@ class Caregiver < ApplicationRecord
     has_many :parents, through: :reviews
     has_one :image
     has_one :location
-    belongs_to :user
+
     validates :username, presence: true, uniqueness: true , length: {maximum: 12}
     validates :email, presence: true, uniqueness: true
     
