@@ -24,20 +24,20 @@ class ApplicationController < ActionController::Base
     def validate_caregiver_params
       #validate the caregiver_params
       #for example if the email is unique
-      if Caregiver.exists?(email: params[:email])
-        render json: { error: 'Email already exists' }, status: :unprocessable_entity
+      if Caregiver.exists?(username: params[:username])
+        render json: { error: 'Username already exists' }, status: :unprocessable_entity
       end
     end
   
     def signin_parent(parent)
       token = JWT.encode({ parent_id: parent.id }, Rails.application.credentials.jwt_secret_key)
-      render json: { token: token, parent: parent.as_json(only: [:id, :name, :email, :phone_number]) }, status: :ok
+      render json: { token: token, parent: parent}, status: :ok
     end
     
   
     def signin_caregiver(caregiver)
       token = JWT.encode({ caregiver_id: caregiver.id }, Rails.application.credentials.jwt_secret_key)
-      render json: { token: token, caregiver: caregiver.as_json(only: [:id, :name, :email, :phone_number]) }, status: :ok
+      render json: { token: token, caregiver: caregiver.as_json()}, status: :ok
     end
     
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_10_082108) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_11_144943) do
   create_table "caregivers", force: :cascade do |t|
     t.string "avatar"
     t.string "name"
@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_10_082108) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
+    t.string "username"
     t.string "password_digest"
   end
 
