@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   
   def parent_login
     parent = Parent.find_by(username: params[:username])
-    if parent&.authenticate(params[:password]) && params[:password] == params[:password_confirmation]
+    if parent&.authenticate(params[:password])
       signin_caregiver(parent)
     else
       render json: { error: 'Invalid username or password' }, status: :unauthorized
@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 
   def caregiver_login
     caregiver = Caregiver.find_by(username: params[:username])
-    if caregiver&.authenticate(params[:password]) && params[:password] == params[:password_confirmation]
+    if caregiver&.authenticate(params[:password])
       signin_caregiver(caregiver)
     else
       render json: { error: 'Invalid username or password' }, status: :unauthorized
