@@ -3,7 +3,7 @@ class ParentAddressesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     def index  
-        parent_addresses = Parent_address.all
+        parent_addresses = ParentAddress.all
         render json: parent_addresses
     end
 
