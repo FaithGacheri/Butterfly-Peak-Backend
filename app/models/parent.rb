@@ -5,7 +5,7 @@ class Parent < ApplicationRecord
     has_one :parent_address
    
     has_secure_password
-    validates :username, presence: true, uniqueness: true , length: {maximum: 12}
+    validates :username, presence: true, uniqueness: true
     validates :email, presence: true, uniqueness: true
     
   end
