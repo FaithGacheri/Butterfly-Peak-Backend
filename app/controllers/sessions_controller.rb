@@ -19,4 +19,15 @@ class SessionsController < ApplicationController
       render json: { error: 'Invalid username or password' }, status: :unauthorized
     end
   end
+
+  def logout_parent
+    session.delete(:parent_id)
+    render json: { message: "Successfully logged out parent" }, status: :ok
+  end
+    
+    
+  def logout_caregiver
+  session.delete(:caregiver_id)
+  render json: { message: "Successfully logged out caregiver" }, status: :ok
+  end
 end
