@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :parents
   resources :reviews
   resources :caregivers
+  resources :images
+  resources :locations
 
 #   post '/authenticate', to: 'authentication#authenticate'
 
