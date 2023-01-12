@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  post 'signup_parent', to: 'sessions#create_parent'
-  post 'signup_caregiver', to: 'sessions#create_caregiver'
+  post 'signup_parent', to: 'parents#create'
+  post 'signup_caregiver', to: 'caregivers#create'
   post 'parent_login', to: 'sessions#parent_login'
   post 'caregiver_login', to: 'sessions#caregiver_login'
 
