@@ -14,6 +14,14 @@ class CaregiversController < ApplicationController
 
 
 
+    # def handle_email
+    #     caregiver = caregiver.find_by(email: params[:email])
+        
+    #     CaregiverMailer.with(caregiver: caregiver).forgot_password(caregiver).deliver
+    # end 
+
+
+
     def create
         caregiver = Caregiver.create!(caregiver_params)
         if caregiver.valid?

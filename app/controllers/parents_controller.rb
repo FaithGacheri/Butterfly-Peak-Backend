@@ -11,8 +11,13 @@ class ParentsController < ApplicationController
 
     def show
         parent = parent.find(params[:id])
-        render json: parent
+        render json: parent           
     end
+
+    def handle_email
+        parent = parent.find_by(email: params[:email])
+        UserMailer.with(user: @parent).forgot_password(parent).deliver
+    end 
 
     def create
         parent = Parent.create!(parent_params)

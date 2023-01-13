@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   post 'parent_login', to: 'sessions#parent_login'
   post 'caregiver_login', to: 'sessions#caregiver_login'
 
+  post 'email_handler', to: 'parents#email_handler'
+
   resources :parent_addresses
   resources :parents
   resources :reviews
