@@ -2,7 +2,8 @@ class ParentsController < ApplicationController
     
     
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-    
+    rescue_from ActiveRecord::RecordInvalid, with: :rescue_record_invalid
+
     def index
   
         parents = Parent.all
@@ -19,9 +20,6 @@ class ParentsController < ApplicationController
         if parent.valid?
             session[:parent_id] = parent.id
             render json: parent, status: :created
-        else
-            render json: { errors: parent.errors.full_messages }, status: :unprocessable_entity
-    
         end
     end
 
@@ -51,5 +49,9 @@ class ParentsController < ApplicationController
         def render_not_found_response
             render json: { error: "Parent not found" }, status: :not_found
         end
+        def rescue_record_invalid(invalid)
+            render json: {errors:invalid.record.errors.full_messages}, status: :unprocessable_entity
+        end
+
 
 end
