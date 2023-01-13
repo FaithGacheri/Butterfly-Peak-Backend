@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   post 'caregiver_login', to: 'sessions#caregiver_login'
 
   post 'email_handler', to: 'parents#email_handler'
+ 
+  post 'google', to: 'parents#google_oauth'
 
   resources :parent_addresses
   resources :parents

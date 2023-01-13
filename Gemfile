@@ -4,6 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # for auth 
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 
+# for google omni auth
+gem 'googleauth', '~> 1.3'
 
 ruby ">=2.7.0"
 gem 'rspec-rails', '~> 4.0'

@@ -43,6 +43,16 @@ class ParentsController < ApplicationController
         render json: parent
     end
 
+    def google
+        begin
+            data = Google::Auth::IDTokens.verify_oidc access_token, aud: "YOUR_GOOGLE_CLIENT_ID"
+            # find the user in the data
+            # if the user does not exist, create a user using data
+            # sign the user (based on your authentication method)
+          rescue StandardError => e
+          end
+    end
+
     private
 
         def parent_finder
