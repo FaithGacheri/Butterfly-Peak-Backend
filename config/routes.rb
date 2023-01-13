@@ -8,6 +8,11 @@ Rails.application.routes.draw do
  
   post 'google', to: 'parents#google_oauth'
 
+  # *** 
+   scope :user do
+     post 'google' => 'users#user_controller.rb'
+   end
+
   resources :parent_addresses
   resources :parents
   resources :reviews

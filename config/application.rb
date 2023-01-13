@@ -45,6 +45,14 @@ module ButterflyBackend
       end
     end
     
+    
+    ## this configuration may be useful to avoid errors 
+    # config.middleware.insert_before 0, Rack::Cors do 
+    #   allow do 
+    #     origins '*' 
+    #     resource( '*', headers: :any, expose: ['Authorization'], methods: %i[get patch put delete post options show] ) 
+    #   end 
+    # end
 
     # Use SameSite=Strict for all cookies to help protect against CSRF
     config.action_dispatch.cookies_same_site_protection = :strict

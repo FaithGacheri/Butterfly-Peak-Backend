@@ -43,6 +43,7 @@ class ParentsController < ApplicationController
         render json: parent
     end
 
+    #google client id is present in the developer console
     def google
         begin
             data = Google::Auth::IDTokens.verify_oidc access_token, aud: "YOUR_GOOGLE_CLIENT_ID"
