@@ -12,6 +12,14 @@ Rails.application.routes.draw do
   post 'bookings/:id/delete', to: 'bookings#destroy'
   post 'bookings/:id/accept', to: 'bookings#accept'
   post 'bookings/:id/reject', to: 'bookings#reject'
+
+  resources :caregivers do
+    resources :reviews, only: [:index]
+  end
+
+  resources :caregivers do
+    resources :bookings, only: [:index]
+  end
   
   resources :parent_addresses
   resources :parents

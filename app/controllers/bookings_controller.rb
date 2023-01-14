@@ -1,11 +1,14 @@
 class BookingsController < ApplicationController
     before_action :set_booking, only: [:show, :update, :destroy, :accept, :reject]
-    
+    before_action :set_caregiver, only: [:index, :create]
+    #show bookings for a given caregiver
     def index
-    bookings = Booking.all
-    render json: bookings
+      @bookings = @caregiver.bookings
+      render json: @bookings
     end
+    
     def show
+    @bookings = Booking.find(params[:id])
     render json: @booking
     end
     
@@ -44,6 +47,11 @@ class BookingsController < ApplicationController
     end
     
     private
+
+    def set_caregiver
+      @caregiver = Caregiver.find(params[:caregiver_id])
+    end
+  
     
     def set_booking
     @booking = Booking.find(params[:id])
