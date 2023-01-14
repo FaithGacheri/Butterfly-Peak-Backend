@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_14_053454) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_14_081517) do
   create_table "bookings", force: :cascade do |t|
     t.integer "caregiver_id"
     t.integer "parent_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_14_053454) do
     t.string "email"
     t.string "username"
     t.string "password_digest"
+    t.decimal "hourly_rate"
   end
 
   create_table "images", force: :cascade do |t|
