@@ -61,7 +61,6 @@ review27 = Review.create!(parent_id: parent3.id, caregiver_id: caregiver1.id, ra
 review28 = Review.create!(parent_id: parent2.id, caregiver_id: caregiver9.id, ratings: 5, comment: "This caregiver is great!")
 review29 = Review.create!(parent_id: parent10.id, caregiver_id: caregiver7.id, ratings: 2, comment: "This caregiver is great!")
 review30 = Review.create!(parent_id: parent2.id, caregiver_id: caregiver2.id, ratings: 1, comment: "This caregiver is great!")
-review30 = Review.create!(parent_id: parent2.id, caregiver_id: caregiver2.id, ratings: 1, comment: "This caregiver is great!")
 review31 = Review.create!(parent_id: parent1.id, caregiver_id: caregiver1.id, ratings: 5, comment: "This caregiver is great!")
 review32 = Review.create!(parent_id: parent2.id, caregiver_id: caregiver3.id, ratings: 5, comment: "This caregiver is great!")
 review33 = Review.create!(parent_id: parent3.id, caregiver_id: caregiver4.id, ratings: 4, comment: "This caregiver is great!")
