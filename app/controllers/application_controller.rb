@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
     include ActionController::Cookies
     skip_before_action :verify_authenticity_token
-    helper_method :parent_params, :caregiver_params, :signin_parent, :signin_caregiver, :current_parent, :current_caregiver
+    helper_method :parent_params, :caregiver_params, :signin_parent, :signin_caregiver, :current_parent, :current_caregiver, :start_time, :end_time
 
     private
   

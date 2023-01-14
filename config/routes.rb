@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :caregivers
   resources :images
   resources :locations
+  resources :bookings
+
 
 #   post '/authenticate', to: 'authentication#authenticate'
 

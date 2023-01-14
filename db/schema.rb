@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_11_144943) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_14_053454) do
+  create_table "bookings", force: :cascade do |t|
+    t.integer "caregiver_id"
+    t.integer "parent_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "caregivers", force: :cascade do |t|
     t.string "avatar"
     t.string "name"
