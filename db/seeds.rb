@@ -5,6 +5,7 @@
 # image1 = Image.create(caregiver_id: caregiver1.id, image1: "https://images.unsplash.com/photo-1519680772-8b1b0b2b1f1c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3b1b1b2b1f1c&auto=format&fit=crop", image2: "https://images.unsplash.com/photo-1519680772-8b1b0b2b1f1c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3b1b1b2b1f1c&auto=format&fit=crop", image3: "https://images.unsplash.com/photo-1519680772-8b1b0b2b1f1c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3b1b1b2b1f1c&auto=format&fit=crop")
 
 #create a caregiver with all the attributes
+
 caregiver1 = Caregiver.create!(name: "Caregiver 1", avatar: "https://images.pexels.com/photos/755049/pexels-photo-755049.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", gender: "female", phone: 1234567890, education: "University", experience: 5, is_booked: false, age: 25, bio: "I am a great caregiver", first_name: "Caregiver1", last_name: "1", password: "676767", password_confirmation: "676767", username: "James kariuki", email: "caregiver2@gmail.com")
 caregiver2 = Caregiver.create!(name: "Caregiver 2", avatar: "https://images.pexels.com/photos/3985022/pexels-photo-3985022.jpeg?cs=srgb&dl=pexels-gustavo-fring-3985022.jpg&fm=jpg", gender: "male", phone: 2234567890, education: "University", experience: 10, is_booked: false, age: 23, bio: "I am a caregiver", first_name: "Caregiver2", last_name: "2", password: "676767", password_confirmation: "676767", username: "Collins kailo", email: "caregiver2@gmail.com")
 caregiver3 = Caregiver.create!(name: "Caregiver 3", avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAOkfHseNYsNhswamnDgAsX3S9c_lk-ReKzQ&usqp=CAU", gender: "female", phone: 228967890, education: "University", experience: 15, is_booked: false, age: 25, bio: "I am a caregiver", first_name: "Caregiver3", last_name: "3", password: "676767", password_confirmation: "676767", username: "viggy girl", email: "caregiver3@gmail.com")
@@ -15,6 +16,9 @@ caregiver7 = Caregiver.create!(name: "Caregiver 7", avatar: "https://muddypuddle
 caregiver8 = Caregiver.create!(name: "Caregiver 8", avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_ahrVOSQFLRQPYFwDXVz0gJHlEsY56TKcxaF1vFlCx_l49S2TqgCE98598JtfYXCuK0I&usqp=CAU", gender: "male", phone: 2234567890, education: "University", experience: 9, is_booked: false, age: 29, bio: "I am a caregiver", first_name: "Caregiver8", last_name: "8", password: "676767", password_confirmation: "676767", username: "jossyn essyn", email: "caregiver1@gmail.com")
 caregiver9 = Caregiver.create!(name: "Caregiver 9", avatar: "https://media.istockphoto.com/id/1267700628/photo/happy-little-baby-learning-to-walk-with-mother-help-in-living-room-baby-taking-his-first.jpg?s=612x612&w=0&k=20&c=NRHkUA-QilaZGLV23SStLenGfvftiNxS4ELJEPw0pXA=", gender: "female", phone: 1234567890, education: "University", experience: 3, is_booked: false, age: 30, bio: "I am a caregiver", first_name: "Caregiver9", last_name: "9", password: "676767", password_confirmation: "676767", username: "luvivam olikrty", email: "caregiver1@gmail.com")
 caregiver10 = Caregiver.create!(name: "Caregiver 10", avatar: "https://previews.123rf.com/images/deklofenak/deklofenak1011/deklofenak101100169/8246641-portrait-of-a-happy-family-home.jpg", gender: "male", phone: 2234567890, education: "University", experience: 10, is_booked: false, age: 32, bio: "I am a caregiver", first_name: "Caregiver10", last_name: "210", password: "676767", password_confirmation: "676767", username: "maiotoli luckas", email: "caregiver1@gmail.com")
+
+
+
 
 parent1 = Parent.create!(name: "Parent 1", phone: 1234567890, first_name: "Parent", last_name: "1", image: "https://images.unsplash.com/photo-1519680772-8b1b0b2b1f1c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3b1b1b2b1f1c&auto", password: "676767", password_confirmation: "676767", email: "johndula@gmail.com", username: "johndula")
 parent2 = Parent.create!(name: "Parent 2", phone: 2234567890, first_name: "Patel", last_name: "3", image: "https://images.unsplash.com/photo-1519680772-8b1b0b2b1f1c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3b1b1b2b1f1c&auto", password: "67", password_confirmation: "67", email: "kisumoto@gmail.com", username: "kisumoto")
@@ -92,3 +96,22 @@ parent_address8 = ParentAddress.create(parent_id: 8, city: "Nairobi", town: "lan
 parent_address9 = ParentAddress.create(parent_id: 9, city: "Nairobi", town: "umojal", street: "umojal", address: "367umojal", province: "kajiado", postal: "60kajiado", zipcode: "3213")
 parent_address10 = ParentAddress.create(parent_id: 10, city: "Nakuru", town: "loviler", street: "loviler", address: "450loviler", province: "fijoui", postal: "309fijoiu", zipcode: "1403")
 
+bookings = [
+    {start_time: '2022-01-01 09:00:00', end_time: '2022-01-01 12:00:00', caregiver_id: 1, parent_id: 1, status: 'Accepted'},
+    {start_time: '2022-01-02 14:00:00', end_time: '2022-01-02 17:00:00', caregiver_id: 2, parent_id: 2, status: 'Accepted'},
+    {start_time: '2022-01-03 10:00:00', end_time: '2022-01-03 13:00:00', caregiver_id: 3, parent_id: 3, status: 'Accepted'},
+    {start_time: '2022-01-04 09:00:00', end_time: '2022-01-04 12:00:00', caregiver_id: 4, parent_id: 4, status: 'Accepted'},
+    {start_time: '2022-01-05 14:00:00', end_time: '2022-01-05 17:00:00', caregiver_id: 5, parent_id: 5, status: 'Accepted'},
+    {start_time: '2022-01-06 14:00:00', end_time: '2022-01-06 17:00:00', caregiver_id: 6, parent_id: 6, status: 'rejected'},
+    {start_time: '2022-01-07 14:00:00', end_time: '2022-01-07 17:00:00', caregiver_id: 7, parent_id: 7, status: 'rejected'},
+    {start_time: '2022-01-08 14:00:00', end_time: '2022-01-08 17:00:00', caregiver_id: 8, parent_id: 8, status: 'rejected'},
+    {start_time: '2022-01-09 14:00:00', end_time: '2022-01-09 17:00:00', caregiver_id: 9, parent_id: 9, status: 'rejected'},
+    {start_time: '2022-01-06 14:00:00', end_time: '2022-01-10 17:00:00', caregiver_id: 10, parent_id: 10, status: 'rejected'},
+    
+    
+  ]
+  
+  bookings.each do |booking|
+    Booking.create!(booking)
+  end
+  
