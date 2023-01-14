@@ -4,6 +4,15 @@ Rails.application.routes.draw do
   post 'parent_login', to: 'sessions#parent_login'
   post 'caregiver_login', to: 'sessions#caregiver_login'
 
+  #add all the necessary routes for the booking controller
+  get 'bookings', to: 'bookings#index'
+  get 'bookings/:id', to: 'bookings#show'
+  post 'bookings', to: 'bookings#create'
+  post 'bookings/:id', to: 'bookings#update'
+  post 'bookings/:id/delete', to: 'bookings#destroy'
+  post 'bookings/:id/accept', to: 'bookings#accept'
+  post 'bookings/:id/reject', to: 'bookings#reject'
+  
   resources :parent_addresses
   resources :parents
   resources :reviews
