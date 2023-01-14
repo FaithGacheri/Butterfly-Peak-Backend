@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
     include ActionController::Cookies
     skip_before_action :verify_authenticity_token
-    helper_method :parent_params, :caregiver_params, :signin_parent, :signin_caregiver
+    helper_method :parent_params, :caregiver_params, :signin_parent, :signin_caregiver, :current_parent, :current_caregiver
 
     private
   
@@ -11,6 +11,13 @@ class ApplicationController < ActionController::Base
   
     def caregiver_params
       params.permit(:username, :email, :password, :password_confirmation, :name, :phone_number)
+    end
+    def current_caregiver
+      @current_caregiver ||= Caregiver.find_by(id: session[:caregiver_id])
+    end
+  
+    def current_parent
+      @current_parent ||= Parent.find_by(id: session[:parent_id])
     end
   
     # def validate_parent_params
