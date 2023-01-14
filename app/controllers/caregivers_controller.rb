@@ -20,6 +20,15 @@ class CaregiversController < ApplicationController
             render json: caregiver, status: :created
         end
     end
+    def book
+        @caregiver.update(is_booked: true)
+        render json: { message: "Caregiver has been booked" }, status: :ok
+      end
+      
+      def unbook
+        @caregiver.update(is_booked: false)
+        render json: { message: "Caregiver has been unbooked" }, status: :ok
+      end
 
 
     def update
