@@ -3,6 +3,7 @@ class ParentsController < ApplicationController
     
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :rescue_record_invalid
+    before_action :parent_finder, only: [:show]
 
     def index
   
@@ -14,7 +15,7 @@ class ParentsController < ApplicationController
         parent = parent.find(params[:id])
         render json: parent
     end
-
+    #update the create method to avoid double rendering
     def create
         parent = Parent.create!(parent_params)
         if parent.valid?
@@ -43,7 +44,7 @@ class ParentsController < ApplicationController
         end
 
         def parent_params
-            params.permit(:username, :password, :password_confirmation, :email, :address, :phone)
+            params.permit(:username, :password, :password_confirmation, :email, :parent_address, :phone)
           end
 
         def render_not_found_response
