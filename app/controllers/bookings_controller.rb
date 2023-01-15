@@ -8,44 +8,52 @@ class BookingsController < ApplicationController
     end
     
     def show
-    @bookings = Booking.find(params[:id])
-    render json: @booking
+      render json: @booking
     end
-    
+  
     def create
-    @booking = Booking.new(booking_params)
-    if @booking.valid?
-    @booking.save
-    render json: @booking, status: :created
-    else
-    render json: { errors: @booking.errors.full_messages }, status: :unprocessable_entity
+      @booking = Booking.new(booking_params)
+      if @booking.save
+        render json: @booking, status: :created
+      else
+        render json: { errors: @booking.errors.full_messages }, status: :unprocessable_entity
+      end
     end
-    end
-    
+  
     def update
-    if @booking.update(booking_params)
-    render json: @booking
-    else
-    render json: { errors: @booking.errors.full_messages }, status: :unprocessable_entity
+      if @booking.update(booking_params)
+        render json: @booking
+      else
+        render json: { errors: @booking.errors.full_messages }, status: :unprocessable_entity
+      end
     end
-    end
-    
+  
     def destroy
-    @booking.destroy
-    render json: @booking
+      @booking.destroy
+      render json: @booking
     end
-    
+  
     def accept
-    @booking.update(status: "Accepted")
-    ActionCable.server.broadcast("bookings_#{params[:parent_id]}", { booking: @booking })
-    render json: { message: "Booking Accepted" }, status: :ok
+      @booking.update(status: true)
+      ActionCable.server.broadcast("bookings_#{params[:parent_id]}", { booking: @booking })
+      render json: { message: "Booking Accepted" }, status: :ok
     end
-    
+  
     def reject
-    @booking.update(status: "rejected")
-    ActionCable.server.broadcast "bookings_#{params[:parent_id]}", booking: @booking.as_json(only: [:id, :caregiver_id, :parent_id, :start_time, :end_time, :status])
+      @booking.update(status: false)
+      ActionCable.server.broadcast "bookings_#{params[:parent_id]}", booking: @booking.as_json(only: [:id, :caregiver_id, :parent_id, :start_time, :end_time, :status])
+      render json: { message: "Booking Rejected" }, status: :ok
     end
-    
+  
+    private
+  
+    def set_booking
+      @booking = Booking.find(params[:id])
+    end
+  
+    def booking_params
+      params.require(:booking).permit(:start_time, :end_time, :caregiver_id, :parent_id, :status)
+    end
     private
 
     def set_caregiver

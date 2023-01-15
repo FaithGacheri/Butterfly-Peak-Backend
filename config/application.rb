@@ -1,5 +1,6 @@
 require_relative "boot"
 
+
 require "rails"
 # Pick the frameworks you want:
 require "active_model/railtie"
@@ -11,7 +12,7 @@ require "action_controller/railtie"
 # require "action_mailbox/engine"
 # require "action_text/engine"
 require "action_view/railtie"
-# require "action_cable/engine"
+ require "action_cable/engine"
 require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -22,6 +23,12 @@ module ButterflyBackend
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+
+  
+    config.action_cable.mount_path = '/cable'
+    config.action_cable.url = "ws://localhost:3000/cable"
+
+
 
     # Configuration for the application, engines, and railties goes here.
     #

@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_14_081517) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_14_202235) do
   create_table "bookings", force: :cascade do |t|
     t.integer "caregiver_id"
     t.integer "parent_id"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.string "status"
+    t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

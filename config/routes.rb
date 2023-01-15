@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
   post 'signup_parent', to: 'parents#create'
   post 'signup_caregiver', to: 'caregivers#create'
   post 'parent_login', to: 'sessions#parent_login'
@@ -12,6 +13,11 @@ Rails.application.routes.draw do
   post 'bookings/:id/delete', to: 'bookings#destroy'
   post 'bookings/:id/accept', to: 'bookings#accept'
   post 'bookings/:id/reject', to: 'bookings#reject'
+  
+
+  get '*path', to: "application#fallback_index_html", constraints: ->(request) do
+    !request.xhr? && request.format.html?
+  end
 
   resources :caregivers do
     resources :reviews, only: [:index]
