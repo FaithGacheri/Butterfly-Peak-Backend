@@ -6,12 +6,13 @@ class SessionsController < ApplicationController
  def parent_login
   parent = Parent.find_by(username: params[:username])
   if parent&.authenticate(params[:password])
-    token = JWT.encode({ parent_id: parent.id }, Rails.application.secrets.secret_key_base)
-    render json: { token: token }, status: :ok
+  # create a token for the parent
+  token = JWT.encode({ parent_id: parent.id }, Rails.application.secrets.secret_key_base)
+  render json: { parent: parent, token: token }, status: :ok
   else
-    render json: { error: 'Invalid username or password' }, status: :unauthorized
+  render json: { error: 'Invalid username or password' }, status: :unauthorized
   end
-end
+  end
 #  def parent_login
 #     parent = Parent.find_by(username: params[:username])
 #     if parent&.authenticate(params[:password])
@@ -35,12 +36,13 @@ end
   def caregiver_login
     caregiver = Caregiver.find_by(username: params[:username])
     if caregiver&.authenticate(params[:password])
-      token = JWT.encode({ caregiver_id: caregiver.id }, Rails.application.secrets.secret_key_base)
-      render json: { token: token }, status: :ok
+    # create a token for the caregiver
+    token = JWT.encode({ caregiver_id: caregiver.id }, Rails.application.secrets.secret_key_base)
+    render json: { caregiver: caregiver, token: token }, status: :ok
     else
-      render json: { error: 'Invalid username or password' }, status: :unauthorized
+    render json: { error: 'Invalid username or password' }, status: :unauthorized
     end
-  end
+    end
 
 
   def logout_parent
