@@ -18,5 +18,18 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
+    @parent = Parent.find_signed!(params[:token], purpose: 'password_reset')
+    if @parent.update(password_params)
+      redirect_to '/login', notice: 'Your password was reset succesfully. Please sign in.'
+    else
+      render 'edit'
+    end
+  rescue ActiveSupport::MessageVerifier::InvalidSignature
+    redirect_to '/login', alert: 'Your token has expired. Please try again'
   end
+end
+private
+
+def password_params
+  params.permit(:password, :password_confirmation)
 end
