@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+  get 'password_resets/create'
+  get 'password_resets/edit'
+  get 'password_resets/update'
   post 'signup_parent', to: 'sessions#create_parent'
   post 'signup_caregiver', to: 'sessions#create_caregiver'
   post 'parent_login', to: 'sessions#parent_login'
