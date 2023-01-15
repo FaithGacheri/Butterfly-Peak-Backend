@@ -1,4 +1,4 @@
-class ParentMailer < ApplicationMailer
+class PasswordResetsMailer < ApplicationMailer
     # def forgot_password
     #     @parent = params[:parent]
     #     #@user = params[:user]
