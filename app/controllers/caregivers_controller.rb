@@ -12,6 +12,14 @@ class CaregiversController < ApplicationController
         caregiver = caregiver_finder
         render json: caregiver
     end
+    
+    def booked_by_parent
+    parent_id = params[:parent_id]
+    bookings = Booking.where(parent_id: parent_id)
+    caregivers = bookings.map{ |booking| Caregiver.find(booking.caregiver_id) }
+    render json: caregivers
+  end
+  
 
     def create
         caregiver = Caregiver.create!(caregiver_params)

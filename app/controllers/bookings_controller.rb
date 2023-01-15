@@ -6,6 +6,11 @@ class BookingsController < ApplicationController
       @bookings = @caregiver.bookings
       render json: @bookings
     end
+
+    def show_caregiver_booking
+      @bookings = Booking.where(caregiver_id: params[:caregiver_id])
+      render json: @bookings
+    end
     
     def show
       render json: @booking

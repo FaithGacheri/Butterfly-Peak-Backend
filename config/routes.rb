@@ -26,6 +26,14 @@ Rails.application.routes.draw do
   resources :caregivers do
     resources :bookings, only: [:index]
   end
+
+  resources :parents do
+    resources :bookings, only: [:index, :show]
+  end
+  get '/parents/:parent_id/bookings/:caregiver_id', to: 'bookings#show_caregiver_booking'
+  get '/caregivers/booked_by_parent/:parent_id', to: 'caregivers#booked_by_parent'
+
+  
   
   resources :parent_addresses
   resources :parents
