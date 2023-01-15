@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html>
   <head>
@@ -15,3 +16,12 @@
     <p>Thanks for joining and have a great day!</p>
   </body>
 </html>
+-->
+
+Hi <%= @parent.name %>
+<br>
+Someone requested a reset of your password.
+<br>
+If this was you, click on the link to reset your password. The link will expire automatically in 15 minutes.
+<br>
+<%= link_to "Reset Password", password_reset_edit_url(token: @token) %>
