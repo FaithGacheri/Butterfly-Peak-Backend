@@ -1,9 +1,11 @@
 class BookingsController < ApplicationController
     before_action :set_booking, only: [:show, :update, :destroy, :accept, :reject]
     before_action :set_caregiver, only: [:index, :create]
-    #show bookings for a given caregiver
+    before_action :set_parent
+  
+    
     def index
-      @bookings = @caregiver.bookings
+      @bookings = @parent.bookings.where(caregiver: @caregiver)
       render json: @bookings
     end
 
@@ -74,6 +76,11 @@ class BookingsController < ApplicationController
     def booking_params
     params.require(:booking).permit(:start_time, :end_time, :caregiver_id, :parent_id, :status)
     end
+
+    def set_parent
+      @parent = Parent.find(params[:parent_id])
+    end
+  
   
    
   end
