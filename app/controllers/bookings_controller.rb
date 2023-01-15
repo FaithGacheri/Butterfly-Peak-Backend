@@ -13,7 +13,8 @@ class BookingsController < ApplicationController
     end
     
     def show
-      render json: @booking
+      bookings = Booking.find(params[:id])
+      render json: bookings
     end
   
     def create
