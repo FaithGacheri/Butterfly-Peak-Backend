@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   post 'parent_login', to: 'sessions#parent_login'
   post 'caregiver_login', to: 'sessions#caregiver_login'
 
+  #get 'login/forgot_password?'
+
+  #password reset routes
+  post 'password/forgot_password', to: 'password_resets#forgot'
+  post 'password/reset_password', to: 'password_resets#reset'
+
   post 'email_handler', to: 'parents#email_handler'
 
   resources :parent_addresses
@@ -18,10 +24,10 @@ Rails.application.routes.draw do
   resources :images
   resources :locations
 
-  #password reset routes
-
+  
+ 
   get '/password/reset', to: 'password_resets#new'
-    post '/password/reset', to: 'password_resets#create'
+    
     get '/password/reset/edit', to: 'password_resets#edit'
     patch '/password/reset/edit', to: 'password_resets#update'
 
