@@ -1,58 +1,33 @@
-
 class SessionsController < ApplicationController
   before_action :validate_parent_params, only: [:create_parent]
- #update the create method to avoid double rendering 
-
- def parent_login
-  parent = Parent.find_by(username: params[:username])
-  if parent&.authenticate(params[:password])
-  # create a token for the parent
-  token = JWT.encode({ parent_id: parent.id }, Rails.application.secrets.secret_key_base)
-  render json: { parent: parent, token: token }, status: :ok
-  else
-  render json: { error: 'Invalid username or password' }, status: :unauthorized
+  
+  def parent_login
+    parent = Parent.find_by(username: params[:username])
+    if parent&.authenticate(params[:password])
+      token = encode_token(parent_id: parent.id)
+      render json: { parent: parent, token: token }, status: :ok
+    else
+      render json: { error: 'Invalid username or password' }, status: :unauthorized
+    end
   end
-  end
-#  def parent_login
-#     parent = Parent.find_by(username: params[:username])
-#     if parent&.authenticate(params[:password])
-#       signin_parent(parent)
-      
-#     else
-#       render json: { error: 'Invalid username or password' }, status: :unauthorized
-#     end
-#   end
-
-  # def caregiver_login
-  #   caregiver = Caregiver.find_by(username: params[:username])
-  #   if caregiver&.authenticate(params[:password])
-  #     signin_caregiver(caregiver)
-      
-  #   else
-  #     render json: { error: 'Invalid username or password' }, status: :unauthorized
-  #   end
-  # end
 
   def caregiver_login
     caregiver = Caregiver.find_by(username: params[:username])
     if caregiver&.authenticate(params[:password])
-    # create a token for the caregiver
-    token = JWT.encode({ caregiver_id: caregiver.id }, Rails.application.secrets.secret_key_base)
-    render json: { caregiver: caregiver, token: token }, status: :ok
+      token = encode_token(caregiver_id: caregiver.id)
+      render json: { caregiver: caregiver, token: token }, status: :ok
     else
-    render json: { error: 'Invalid username or password' }, status: :unauthorized
+      render json: { error: 'Invalid username or password' }, status: :unauthorized
     end
-    end
-
+  end
 
   def logout_parent
     session.delete(:parent_id)
     render json: { message: "Successfully logged out parent" }, status: :ok
   end
-    
-    
+
   def logout_caregiver
-  session.delete(:caregiver_id)
-  render json: { message: "Successfully logged out caregiver" }, status: :ok
+    session.delete(:caregiver_id)
+    render json: { message: "Successfully logged out caregiver" }, status: :ok
   end
 end

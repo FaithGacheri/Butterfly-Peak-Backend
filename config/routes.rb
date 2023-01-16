@@ -35,7 +35,7 @@ Rails.application.routes.draw do
         resources :bookings, only: [:index]
     end
 end
-
+  
   get '/caregivers/booked_by_parent/:parent_id', to: 'caregivers#booked_by_parent'
 
   

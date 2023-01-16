@@ -1,4 +1,5 @@
 class CaregiversController < ApplicationController
+   
     
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :rescue_record_invalid
@@ -71,6 +72,8 @@ class CaregiversController < ApplicationController
         def rescue_record_invalid(invalid)
             render json: {errors:invalid.record.errors.full_messages}, status: :unprocessable_entity
         end
+
+       
 
         
 end
