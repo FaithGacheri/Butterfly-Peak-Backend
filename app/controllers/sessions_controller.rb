@@ -1,30 +1,11 @@
-
 class SessionsController < ApplicationController
   before_action :validate_parent_params, only: [:create_parent]
-  before_action :validate_caregiver_params, only: [:create_caregiver]
   
-  def create_parent
-    parent = Parent.create(parent_params)
-    if parent.valid?
-      signin_parent(parent)
-    else
-      render json: { errors: parent.errors }, status: :unprocessable_entity
-    end
-  end
-
-  def create_caregiver
-    caregiver = Caregiver.create(caregiver_params)
-    if caregiver.valid?
-      signin_caregiver(caregiver)
-    else
-      render json: { errors: caregiver.errors }, status: :unprocessable_entity
-    end
-  end
-
   def parent_login
     parent = Parent.find_by(username: params[:username])
     if parent&.authenticate(params[:password])
-      signin_parent(parent)
+      token = encode_token(parent_id: parent.id)
+      render json: { parent: parent, token: token }, status: :ok
     else
       render json: { error: 'Invalid username or password' }, status: :unauthorized
     end
@@ -33,11 +14,20 @@ class SessionsController < ApplicationController
   def caregiver_login
     caregiver = Caregiver.find_by(username: params[:username])
     if caregiver&.authenticate(params[:password])
-      signin_caregiver(caregiver)
+      token = encode_token(caregiver_id: caregiver.id)
+      render json: { caregiver: caregiver, token: token }, status: :ok
     else
-      render json: { error: 'Invalid email or password' }, status: :unauthorized
-
-      
+      render json: { error: 'Invalid username or password' }, status: :unauthorized
     end
+  end
+
+  def logout_parent
+    session.delete(:parent_id)
+    render json: { message: "Successfully logged out parent" }, status: :ok
+  end
+
+  def logout_caregiver
+    session.delete(:caregiver_id)
+    render json: { message: "Successfully logged out caregiver" }, status: :ok
   end
 end

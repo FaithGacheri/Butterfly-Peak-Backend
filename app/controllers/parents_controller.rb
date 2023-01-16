@@ -1,8 +1,10 @@
 class ParentsController < ApplicationController
-    
+  
     
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-    
+    rescue_from ActiveRecord::RecordInvalid, with: :rescue_record_invalid
+    before_action :parent_finder, only: [:show]
+
     def index
   
         parents = Parent.all
@@ -13,20 +15,12 @@ class ParentsController < ApplicationController
         parent = parent.find(params[:id])
         render json: parent           
     end
-
-    def handle_email
-        parent = parent.find_by(email: params[:email])
-        UserMailer.with(user: @parent).forgot_password(parent).deliver
-    end 
-
+    #update the create method to avoid double rendering
     def create
         parent = Parent.create!(parent_params)
         if parent.valid?
             session[:parent_id] = parent.id
             render json: parent, status: :created
-        else
-            render json: { errors: parent.errors.full_messages }, status: :unprocessable_entity
-    
         end
     end
 
@@ -50,11 +44,16 @@ class ParentsController < ApplicationController
         end
 
         def parent_params
-            params.permit(:username, :password, :password_confirmation, :email, :address, :phone)
-          end
+            params.permit(:username, :password, :password_confirmation, :email, :parent_address, :phone)
+        end
 
         def render_not_found_response
             render json: { error: "Parent not found" }, status: :not_found
         end
 
+        def rescue_record_invalid(invalid)
+            render json: {errors:invalid.record.errors.full_messages}, status: :unprocessable_entity
+        end
+
+       
 end

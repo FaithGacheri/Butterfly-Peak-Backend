@@ -1,13 +1,15 @@
 class Caregiver < ApplicationRecord
+    
 
     # belongs_to :parent
     has_many :reviews
     has_many :parents, through: :reviews
     has_one :image
     has_one :location
+    has_many :bookings
 
-    # validates :username, presence: true, uniqueness: true , length: {maximum: 12}
-    # validates :email, presence: true, uniqueness: true
+    # validates :username, presence: true, uniqueness: true
+     validates :email, presence: true
     
     has_secure_password
 end

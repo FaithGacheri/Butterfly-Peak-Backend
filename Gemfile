@@ -7,6 +7,7 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 
 ruby ">=2.7.0"
 gem 'rspec-rails', '~> 4.0'
+gem 'actioncable', '~> 7.0.4'
 
 
 

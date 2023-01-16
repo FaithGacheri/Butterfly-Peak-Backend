@@ -4,7 +4,7 @@ class PasswordResetsController < ApplicationController
 
   #how to do for both parent and caregiver
   def create
-    if @parent = Parent.find_by_email_address(params[:email_address])
+    if @parent = Parent.find_by_email(params[:email])
       PasswordMailer.with(parent: @parent).reset.deliver_later
     end
     #redirect to appropriate view
