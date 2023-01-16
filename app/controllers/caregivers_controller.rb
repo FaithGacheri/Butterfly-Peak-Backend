@@ -32,12 +32,17 @@ class CaregiversController < ApplicationController
     def book
         @caregiver.update(is_booked: true)
         render json: { message: "Caregiver has been booked" }, status: :ok
+    end
+    def show_parent_bookings
+        @caregiver = Caregiver.find(params[:id])
+        @bookings = @caregiver.bookings
+        render json: {bookings: @bookings}
       end
       
-      def unbook
+    def unbook
         @caregiver.update(is_booked: false)
         render json: { message: "Caregiver has been unbooked" }, status: :ok
-      end
+    end
 
 
     def update
