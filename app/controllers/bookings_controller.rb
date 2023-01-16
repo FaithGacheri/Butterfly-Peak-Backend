@@ -2,7 +2,13 @@ class BookingsController < ApplicationController
   # before_action :set_booking, only: [:show, :update, :destroy, :accept, :reject]
   # before_action :set_caregiver, only: [:index, :create]
   #   # before_action :set_parent
-
+  def create
+    @booking = Booking.new(booking_params)
+    if @booking.save
+      @caregiver = Caregiver.find(@booking.caregiver_id)
+      @caregiver.broadcast_new_booking(@booking)
+    end
+  end
   
   def index
     bookings =Booking.all
@@ -38,14 +44,7 @@ end
     render json: bookings
   end
 
-  def create
-    @booking = Booking.new(booking_params)
-    if @booking.save
-      render json: @booking, status: :created
-    else
-      render json: { errors: @booking.errors.full_messages }, status: :unprocessable_entity
-    end
-  end
+ 
 
   def update
     if @booking.update(booking_params)
