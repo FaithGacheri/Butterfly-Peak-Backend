@@ -36,13 +36,16 @@ end
 
 def toggle
   @booking = Booking.find(params[:id])
-  if @booking.update(status: params[:status])
-    render json: { message: "Booking status updated" }, status: :ok
+  if [true, false].include?(params[:status])
+    if @booking.update(status: params[:status])
+      render json: { message: "Booking status updated" }, status: :ok
+    else
+      render json: { errors: @booking.errors.full_messages }, status: :unprocessable_entity
+    end
   else
-    render json: { errors: @booking.errors.full_messages }, status: :unprocessable_entity
+    render json: { message: "Invalid status value" }, status: :unprocessable_entity
   end
 end
-
 
 
   def show_caregiver_booking
@@ -102,8 +105,10 @@ end
   @booking = Booking.find(params[:id])
   end
   
+  #permit booking params
+
   def booking_params
-  params.require(:booking).permit(:start_time, :end_time, :caregiver_id, :parent_id, :status)
+    params.permit(:start_time, :end_time, :caregiver_id, :parent_id, :status)
   end
 
   # def set_parent
