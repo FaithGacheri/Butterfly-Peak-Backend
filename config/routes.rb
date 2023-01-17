@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   post 'parent_login', to: 'sessions#parent_login'
   post 'caregiver_login', to: 'sessions#caregiver_login'
 
-  #add all the necessary routes for the booking controller
+  get '/parent', to: 'parents#show'
+  get '/caregiver', to: 'caregivers#show_caregiver'
+  
   get 'bookings', to: 'bookings#index'
   get 'bookings/:id', to: 'bookings#show'
   post 'bookings', to: 'bookings#create'

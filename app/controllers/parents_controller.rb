@@ -12,8 +12,8 @@ class ParentsController < ApplicationController
     end
 
     def show
-        parent = parent.find(params[:id])
-        render json: parent
+        user=Parent.find_by(id:session[:parent_id])
+        render json: user, status: :created
     end
     #update the create method to avoid double rendering
     def create

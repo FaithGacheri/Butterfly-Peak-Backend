@@ -13,6 +13,11 @@ class CaregiversController < ApplicationController
         caregiver = caregiver_finder
         render json: caregiver
     end
+
+    def show_caregiver
+        user=Caregiver.find_by(id:session[:caregiver_id])
+        render json: user, status: :created
+    end
     
     def booked_by_parent
     parent_id = params[:parent_id]
