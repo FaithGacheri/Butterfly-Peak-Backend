@@ -6,11 +6,12 @@ class PasswordResetsMailer < ApplicationMailer
     #     mail(to: @parent.email, subject: 'Welcome to My Awesome Site')
     #   end
 
-    def reset(parent)
+    def password_reset(parent)
       @parent = parent
+    
       #@token = @parent.signed_id(purpose: 'password_reset', expires_in: 15.minutes)
   
-      mail to: @parent.email_address
+      mail to: @parent.email, subject: "Password Reset"
     end
 
 

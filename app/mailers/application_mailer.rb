@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'hesewep806@themesw.com'
-  layout 'mailer'
+  default from: 'bbcareproject@gmail.com'
+  # layout 'mailer'
 end
 

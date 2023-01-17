@@ -10,9 +10,9 @@ class PasswordResetsController < ApplicationController
       }
       parent.send_password_reset
     else
-      #this sends regardless of whether there's an email in database for security reasons
+      #will edit this back so that same alert sends regardless of whether there's an email in database for security reasons
       render json: {
-        alert: "If this user exists, we have sent you a password reset email."
+        alert: "no such email but If this user exists, we have sent you a password reset email ."
       }
     end
   end

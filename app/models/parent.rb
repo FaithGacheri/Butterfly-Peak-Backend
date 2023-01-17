@@ -13,13 +13,13 @@ class Parent < ApplicationRecord
 
      validates :password, length: { minimum: 5, wrong_length: "Password must be at least 5 characters." }, if: :password
   
-  ...
+  
   #password reset methods
     def send_password_reset
       self.password_reset_token = generate_base64_token
       self.password_reset_sent_at = Time.zone.now
       save!
-      UserMailer.password_reset(self).deliver_now
+      PasswordResetsMailer.password_reset(self).deliver_now
     end
   
     def password_token_valid?
