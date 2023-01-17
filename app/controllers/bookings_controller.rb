@@ -6,7 +6,8 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     if @booking.save
       @caregiver = Caregiver.find(@booking.caregiver_id)
-      @caregiver.broadcast_new_booking(@booking)
+      render json: @booking
+    
     end
   end
   
