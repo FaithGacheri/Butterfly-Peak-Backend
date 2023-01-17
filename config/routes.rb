@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   post 'signup_caregiver', to: 'caregivers#create'
   post 'parent_login', to: 'sessions#parent_login'
   post 'caregiver_login', to: 'sessions#caregiver_login'
+  delete '/caregiver/logout', to: 'sessions#logout_caregiver'
+  delete '/logout', to: 'sessions#logout_parent'
+
+
 
   get '/parent', to: 'parents#show'
   get '/caregiver', to: 'caregivers#show_caregiver'
