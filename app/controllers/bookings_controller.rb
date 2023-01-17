@@ -34,6 +34,16 @@ def index_by_caregiver
   render json: bookings
 end
 
+def toggle
+  @booking = Booking.find(params[:id])
+  if @booking.update(status: params[:status])
+    render json: { message: "Booking status updated" }, status: :ok
+  else
+    render json: { errors: @booking.errors.full_messages }, status: :unprocessable_entity
+  end
+end
+
+
 
   def show_caregiver_booking
     @bookings = Booking.where(caregiver_id: params[:caregiver_id])
