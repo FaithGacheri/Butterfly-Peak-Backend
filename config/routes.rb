@@ -26,10 +26,10 @@ Rails.application.routes.draw do
 
   
  
-  get '/password/reset', to: 'password_resets#new'
+  # get '/password/reset', to: 'password_resets#new'
     
-    get '/password/reset/edit', to: 'password_resets#edit'
-    patch '/password/reset/edit', to: 'password_resets#update'
+  #   get '/password/reset/edit', to: 'password_resets#edit'
+  #   patch '/password/reset/edit', to: 'password_resets#update'
 
 #   post '/authenticate', to: 'authentication#authenticate'
 

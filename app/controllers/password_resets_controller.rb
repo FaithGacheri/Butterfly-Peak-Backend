@@ -32,6 +32,7 @@ class PasswordResetsController < ApplicationController
       end
     else
       render json: {error:  ['Link not valid or expired. Try generating a new link.']}, status: :not_found
+  
     end
   end
 
