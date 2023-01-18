@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   post 'password/forgot_password', to: 'password_resets#forgot'
   post 'password/reset_password', to: 'password_resets#reset'
 
-  post 'email_handler', to: 'parents#email_handler'
 
   resources :parent_addresses
   resources :parents

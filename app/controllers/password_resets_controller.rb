@@ -20,7 +20,7 @@ class PasswordResetsController < ApplicationController
 
 
   def reset
-    parent = Parent.find_by(password_reset_token: params[:token], email: params[:email])
+    parent = Parent.find_by(password_reset_token: params[:password_reset_token], email: params[:email])
     if parent.present? && parent.password_token_valid?
       if parent.reset_password(params[:password])
         render json: {
