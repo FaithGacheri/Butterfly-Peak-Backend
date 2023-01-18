@@ -54,6 +54,8 @@ Rails.application.routes.draw do
   get '/caregivers/:caregiver_id/bookings', to: 'bookings#show_caregiver_booking'
   get '/caregivers/:caregiver_id/bookings/parents', to: 'bookings#index_by_caregiver_and_parent'
   patch '/bookings/:id/toggle', to: 'bookings#toggle'
+  get '/parents/:parent_id/bookings', to: 'bookings#index_by_parent'
+
 
 
 
