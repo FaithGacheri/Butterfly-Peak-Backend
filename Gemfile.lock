@@ -198,6 +198,7 @@ DEPENDENCIES
   byebug
   debug
   jwt
+  minitest (~> 5.8, >= 5.8.4)
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.4)

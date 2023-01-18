@@ -47,6 +47,25 @@ Rails.application.configure do
 
   config.action_cable.allowed_request_origins = ['http://localhost:3000']
 
+   #added mailer settings
+   config.action_mailer.perform_deliveries = true
+   config.action_mailer.raise_delivery_errors = true
+ 
+   config.action_mailer.delivery_method = :smtp
+   host = 'localhost:3000'
+   config.action_mailer.default_url_options = { :host => 'localhost:3000', protocol: 'http' }
+ 
+   # SMTP settings for gmail
+    config.action_mailer.smtp_settings = {
+      :address              => "smtp.gmail.com",
+      :port                 => 587,
+      :user_name            => "bbcareproject@gmail.com",
+      :password             => "yipudoooycydoqlc",
+      :authentication       => "plain",
+      :enable_starttls_auto => true
+    }
+ 
+
 
 
   # Raises error for missing translations.
@@ -56,11 +75,10 @@ Rails.application.configure do
   # config.action_view.annotate_rendered_view_with_filenames = true
 
   # Uncomment if you wish to allow Action Cable access from any origin.
-   config.action_cable.disable_request_forgery_protection = true
+  # config.action_cable.disable_request_forgery_protection = true
+  
+  # host = 'localhost:3000'
+  # config.action_mailer.default_url_options = {host: 'localhost:3000'}
 
-   config.action_dispatch.default_headers = {
-    'Access-Control-Allow-Origin' => 'http://localhost:3000',
-    'Access-Control-Request-Method' => %w{GET POST OPTIONS}.join(",")
-}
 
 end

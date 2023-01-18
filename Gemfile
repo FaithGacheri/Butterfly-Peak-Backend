@@ -30,6 +30,7 @@ gem 'active_model_serializers'
 gem 'jwt'
 gem 'rack-cors'
 
+gem 'minitest', '~> 5.8', '>= 5.8.4'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem "rack-cors"
 

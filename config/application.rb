@@ -15,6 +15,8 @@ require "action_view/railtie"
  require "action_cable/engine"
 require "rails/test_unit/railtie"
 
+require 'action_mailer/railtie'
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -52,10 +54,12 @@ module ButterflyBackend
       end
     end
     
+    #Not sure but maybe you need to include the ActionDispatch::Flash middleware to support the flash. 
+    config.middleware.use ActionDispatch::Flash
 
     # Use SameSite=Strict for all cookies to help protect against CSRF
     config.action_dispatch.cookies_same_site_protection = :strict
     # Skip views, helpers and assets when generating a new resource.
-    config.api_only = true
+    config.api_only = false
   end
 end
