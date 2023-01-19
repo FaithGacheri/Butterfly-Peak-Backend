@@ -18,6 +18,13 @@ Rails.application.routes.draw do
   get '/parent', to: 'parents#show'
   get '/caregiver', to: 'caregivers#show_caregiver'
 
+ 
+  post 'parent_login/google', to: 'parents#google'
+
+  # *** 
+  #  scope :parent do
+  #    post 'google' => 'users#user_controller.rb'
+  #  end
 
   resources :parent_addresses
   resources :parents

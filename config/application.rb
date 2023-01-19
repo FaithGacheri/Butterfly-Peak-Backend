@@ -53,7 +53,24 @@ module ButterflyBackend
         resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
       end
     end
+
+    ## this configuration may be useful to avoid errors 
+    config.middleware.insert_before 0, Rack::Cors do 
+      allow do 
+        origins '*' 
+        resource( '*', headers: :any, expose: ['Authorization'], methods: %i[get patch put delete post options show] ) 
+      
+      end 
+    end
     
+    
+    
+    # config.middleware.insert_before 0, Rack::Cors do 
+    #   allow do 
+    #     origins '*' 
+    #     resource( '*', headers: :any, expose: ['Authorization'], methods: %i[get patch put delete post options show] ) 
+    #   end 
+    # end
     #Not sure but maybe you need to include the ActionDispatch::Flash middleware to support the flash. 
     config.middleware.use ActionDispatch::Flash
 
