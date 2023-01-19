@@ -6,12 +6,12 @@ Rails.application.routes.draw do
 
   post 'email_handler', to: 'parents#email_handler'
  
-  post 'google', to: 'parents#google_oauth'
+  post 'parent_login/google', to: 'parents#google'
 
   # *** 
-   scope :user do
-     post 'google' => 'users#user_controller.rb'
-   end
+  #  scope :parent do
+  #    post 'google' => 'users#user_controller.rb'
+  #  end
 
   resources :parent_addresses
   resources :parents

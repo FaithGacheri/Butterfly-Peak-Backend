@@ -7,6 +7,9 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 # for google omni auth
 gem 'googleauth', '~> 1.3'
 
+#for cross origin response issues
+# gem 'rack-cors', '~> 1.1', '>= 1.1.1'
+
 ruby ">=2.7.0"
 gem 'rspec-rails', '~> 4.0'
 
@@ -38,13 +41,14 @@ gem 'minitest', '~> 5.8', '>= 5.8.4'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  
+
 end
 
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  
 end
 
 group :development do
