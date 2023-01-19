@@ -154,3 +154,4 @@ bookings = [
     Booking.create!(booking)
   end
   
+Favourite.create(name: "Nanny 01", nanny_url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAOkfHseNYsNhswamnDgAsX3S9c_lk-ReKzQ&usqp=CAU", nannyLocation:"Nairobi", rating:5, nannyPrice:"1500")
