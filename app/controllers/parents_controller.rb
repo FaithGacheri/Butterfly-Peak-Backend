@@ -61,7 +61,7 @@ class ParentsController < ApplicationController
         parent = Parent.find_by(email: data["email"])
         
           if parent
-            #  signin_parent(parent)
+            #signin_parent(parent)
              session[:parent_id] = parent.id
              render json: parent
         #     #  render data
