@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :favourites
   mount ActionCable.server => '/cable'
  
   post 'signup_parent', to: 'parents#create'
