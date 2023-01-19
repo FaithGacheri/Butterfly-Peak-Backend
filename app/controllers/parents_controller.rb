@@ -44,7 +44,7 @@ class ParentsController < ApplicationController
      
         begin
         data = Google::Auth::IDTokens.verify_oidc params[:token], aud: "200026631861-i1n7ef5gq62dhvecvnenvurqek9o6gad.apps.googleusercontent.com"
-   
+        
         # parent = Parent.find_or_create_by(email: data[:email])  do |u|
         #      u.username = data[:name]
         #      u.password = data[:sub]
@@ -59,21 +59,22 @@ class ParentsController < ApplicationController
         #      render json: { error: 'Invalid username or password' }, status: :unauthorized
         #  end
         parent = Parent.find_by(email: data["email"])
+        
           if parent
-             signin_parent(parent)
+            #signin_parent(parent)
              session[:parent_id] = parent.id
+             render json: parent
         #     #  render data
                 
           else
             parent = Parent.create(username: data["given_name"], email: data["email"])
-        
-            signin_parent(parent)
+            # signin_parent(parent)
               session[:parent_id] = parent.id
         #     #  render data
-        #     #  render json: parent, status: :created
+          render json: parent, status: :created
           end
-
-         
+          
+          
    
         rescue StandardError => e
         end
