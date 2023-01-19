@@ -3,12 +3,12 @@ class PasswordResetsController < ApplicationController
   end
 
   def forgot
-    parent = Parent.find_by(email: params[:_json])
-    if parent
+    user = Parent.find_by(email: params[:_json])
+    if user
       render json: {
         alert: "If this user exists, we have sent you a password reset email."
       }
-      parent.send_password_reset
+      user.send_password_reset
     else
       #will edit this back so that same alert sends regardless of whether there's an email in database for security reasons
       render json: {
@@ -20,15 +20,16 @@ class PasswordResetsController < ApplicationController
 
 
   def reset
-    parent = Parent.find_by(password_reset_token: params[:password_reset_token], email: params[:email])
-    if parent.present? && parent.password_token_valid?
-      if parent.reset_password(params[:password])
-        render json: {
-          alert: "Your password has been successfuly reset!"
-        }
-        session[:parent_id] = parent.id
+    user = Parent.find_by(password_reset_token: params[:password_reset_token], email: params[:email])
+    if user.present? && user.password_token_valid?
+      if user.reset_password(params[:password])
+        # render json: {
+        #   alert: "Your password has been successfuly reset!"
+        # }
+        session[:parent_id] = user.id
+        render json: user
       else
-        render json: { error: parent.errors.full_messages }, status: :unprocessable_entity
+        render json: { error: user.errors.full_messages }, status: :unprocessable_entity
       end
     else
       render json: {error:  ['Link not valid or expired. Try generating a new link.']}, status: :not_found
