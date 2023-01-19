@@ -15,7 +15,8 @@ gem 'rspec-rails', '~> 4.0'
 gem 'actioncable', '~> 7.0.4'
 
 
-
+# added postgresql 
+gem 'pg'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"

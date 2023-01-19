@@ -1,0 +1,19 @@
+databases:
+  - name: bbcare
+    databaseName: bbcaredb
+    user: bbcare
+
+services:
+  - type: web
+    plan: free
+    name: bbcare
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: mysite
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
