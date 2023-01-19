@@ -13,13 +13,15 @@ class ParentsController < ApplicationController
 
     def show
         user=Parent.find_by(id:session[:parent_id])
-        render json: user, status: :created
+        render json: user, status: :created           
     end
     #update the create method to avoid double rendering
     def create
         parent = Parent.create!(parent_params)
         if parent.valid?
+            
             session[:parent_id] = parent.id
+
             render json: parent, status: :created
         end
     end
@@ -35,6 +37,46 @@ class ParentsController < ApplicationController
         parent = parent.find(params[:id])
         parent.destroy
         render json: parent
+    end
+
+    #google client id is present in the developer console
+    def google
+     
+        begin
+        data = Google::Auth::IDTokens.verify_oidc params[:token], aud: "200026631861-i1n7ef5gq62dhvecvnenvurqek9o6gad.apps.googleusercontent.com"
+   
+        # parent = Parent.find_or_create_by(email: data[:email])  do |u|
+        #      u.username = data[:name]
+        #      u.password = data[:sub]
+        #      u.password_confirmation = data[:sub]
+        #      u.email = data[:email]
+        #  end
+
+        #  if parent.valid?
+        #      signin_parent(parent)
+        #      session[:parent_id] = parent.id
+        #  else
+        #      render json: { error: 'Invalid username or password' }, status: :unauthorized
+        #  end
+        parent = Parent.find_by(email: data["email"])
+          if parent
+             signin_parent(parent)
+             session[:parent_id] = parent.id
+        #     #  render data
+                
+          else
+            parent = Parent.create(username: data["given_name"], email: data["email"])
+        
+            signin_parent(parent)
+              session[:parent_id] = parent.id
+        #     #  render data
+        #     #  render json: parent, status: :created
+          end
+
+         
+   
+        rescue StandardError => e
+        end
     end
 
     private

@@ -10,6 +10,13 @@ class BookingsController < ApplicationController
     
     end
   end
+
+  def index_by_parent
+    parent = Parent.find(params[:parent_id])
+    bookings = Booking.where(parent_id: parent.id)
+    render json: bookings
+  end
+  
   
   def index
     bookings =Booking.all
