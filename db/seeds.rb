@@ -8,9 +8,9 @@
 
 Parent.destroy_all
 Caregiver.destroy_all
-# Image.destroy_all
-# Location.destroy_all
-# ParentAddress.destroy_all
+Image.destroy_all
+Location.destroy_all
+ParentAddress.destroy_all
 # Favourite.destroy_all
 # Review.destroy_all
 
