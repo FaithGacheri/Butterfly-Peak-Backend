@@ -41,10 +41,10 @@ development:
 
 test:
   # <<: *default
-  database: mysite_test
+  database: bbcare_test
   production:
-  database: mysite_production
-  username: mysite
+  database: bbcare_production
+  username: bbcare
   password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
   #  <<: *default
   adapter: postgresql
