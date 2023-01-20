@@ -41,7 +41,7 @@ development:
 
 test:
   # <<: *default
-  database: bbcare_test
+  database: bbcaredb_test
   production:
   database: bbcare_production
   username: bbcare
