@@ -2,11 +2,11 @@ class Caregiver < ApplicationRecord
     
 
     # belongs_to :parent
-    has_many :reviews
+    has_many :reviews, dependent: :destroy
     has_many :parents, through: :reviews
     has_one :image
     has_one :location
-    has_many :bookings
+    has_many :bookings, dependent: :destroy
 
     # validates :username, presence: true, uniqueness: true
      validates :email, presence: true

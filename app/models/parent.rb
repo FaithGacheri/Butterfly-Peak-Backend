@@ -1,10 +1,10 @@
 
 class Parent < ApplicationRecord
    
-  has_many :reviews
-    has_many :caregivers, through: :reviews
+  has_many :reviews, dependent: :destroy
+    has_many :caregivers, through: :reviews 
     has_one :parent_address
-    has_many :bookings
+    has_many :bookings, dependent: :destroy
     has_many :caregivers, through: :bookings
    
     has_secure_password
